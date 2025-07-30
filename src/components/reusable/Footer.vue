@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 
 
 const serviceStatus = {
-    status: 'Offline', // online, offline, maintenance
+    status: 'online', // online, offline, maintenance
     message: 'Services are offline', // Services are online, Services under maintenance
 };
 
@@ -48,7 +48,7 @@ const serviceStatus = {
             <router-link to="/" class="logo hidden md:flex items-center">
                 <!-- <img src="/src/assets/images/logos/logo-black-inline.svg" class="mr-1 w-6 h-6" alt="Logo" />
                 <span class="logo-text text-xl font-medium whitespace-nowrap">{{ projectName }}</span> -->
-                <Logo/>
+                <Logo />
             </router-link>
 
             <!-- Useful links -->
@@ -63,8 +63,7 @@ const serviceStatus = {
                 <router-link to="/legal/policy" class="md:mr-4 transition hover:text-purple-300">
                     Privacy
                 </router-link>
-                <a href="https://heisdanielade.xyz" target="_blank"
-                    class="transition hover:text-purple-300">
+                <a href="https://heisdanielade.xyz" target="_blank" class="transition hover:text-purple-300">
                     Developer
                 </a>
             </div>
@@ -94,23 +93,30 @@ const serviceStatus = {
             </div>
 
 
-        
+
 
 
             <!-- Application Status -->
-            <div class="status m-4 flex items-center justify-center font-semibold transition-all bg-transparent hover:bg-zinc-700 p-1.5 rounded-lg">
-                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'online'" class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-green-900 rounded-full">
-                    <span class="icon flex items-center justify-center bg-green-500 text-[0.625rem] w-3.5 h-3.5 rounded-full">
+            <div
+                class="status m-4 flex items-center justify-center font-semibold transition-all bg-transparent hover:bg-zinc-700 p-1.5 rounded-lg">
+                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'online'"
+                    class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-green-900 rounded-full">
+                    <span
+                        class="icon flex items-center justify-center bg-green-500 text-[0.625rem] w-3.5 h-3.5 rounded-full">
                         <i class="fa-solid fa-check"></i>
                     </span>
                 </span>
-                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'offline'" class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-red-900 rounded-full">
-                    <span class="icon flex items-center justify-center bg-red-500 text-[0.625rem] w-3.5 h-3.5 rounded-full">
+                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'offline'"
+                    class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-red-900 rounded-full">
+                    <span
+                        class="icon flex items-center justify-center bg-red-500 text-[0.625rem] w-3.5 h-3.5 rounded-full">
                         <i class="fa-solid fa-xmark"></i>
                     </span>
                 </span>
-                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'maintenance'" class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-yellow-900 rounded-full">
-                    <span class="icon flex items-center justify-center bg-yellow-500 text-[0.55rem] w-3.5 h-3.5 rounded-full">
+                <span v-if="serviceStatus.status.toLocaleLowerCase() === 'maintenance'"
+                    class="icon-container flex items-center justify-center mr-1 h-5 w-5 bg-yellow-900 rounded-full">
+                    <span
+                        class="icon flex items-center justify-center bg-yellow-500 text-[0.55rem] w-3.5 h-3.5 rounded-full">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </span>
                 </span>
