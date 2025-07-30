@@ -204,9 +204,9 @@ const handleLogin = async () => {
     await authService.login(user.value);
 
     userStore.token = localStorage.getItem("token");
-    const userDetails = await userService.userDetails();
-    userStore.setUserDetails(userDetails.data);
-    userStore.isLoaded = true;
+    // const userDetails = await userService.userDetails();
+    // userStore.setUserDetails(userDetails.data);
+    // userStore.isLoaded = true;
 
     if (toast) {
       toast.value.showToast("Login successful.", "success");

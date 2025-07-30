@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/v1";
-// const API_URL = "https://api-pamietampsa.up.railway.app/v1";
-
+// const API_URL = "http://localhost:8080/v1";
+const API_URL = "https://api-petcare-v2.onrender.com/";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -10,7 +9,6 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
-
 
 // Add a request interceptor to attach the token
 api.interceptors.request.use(

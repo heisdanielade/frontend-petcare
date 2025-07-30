@@ -3,7 +3,7 @@ import { onMounted, computed, ref } from "vue";
 import petService from "@/services/pet";
 
 const pets = ref([]);
-const previewPets = computed(() => pets.value.slice(0, 3));
+const previewPets = computed(() => pets.value.slice(0, 5));
 
 
 const getAllPets = async () => {

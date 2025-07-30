@@ -24,7 +24,7 @@
                     <!-- OR Separator -->
                     <div class="flex items-center mt-7 mb-6">
                         <div class="flex-1 h-px bg-gray-300"></div>
-                        <span class="px-3 text-gray-500 text-sm">Email OTP</span>
+                        <span class="px-3 text-gray-500 text-sm">Email verificationCode</span>
                         <div class="flex-1 h-px bg-gray-300"></div>
                     </div>
 
@@ -32,16 +32,16 @@
                     <form @submit.prevent="handleCodeVerification">
                         <div class="relative mb-2">
                             <div class="flex items-center justify-evenly w-full gap-x-1 pt-12 md:pt-10">
-                                <input v-for="(digit, index) in otpArray" :key="index" v-model="otpArray[index]"
+                                <input v-for="(digit, index) in verificationCodeArray" :key="index" v-model="verificationCodeArray[index]"
                                     type="number"
                                     class="block w-10 h-10 text-center font-medium text-2xl bg-transparent border-b-2 border-x-transparent border-b-gray-500 border-opacity-30 focus:outline-none focus:border-purple-700 disabled:opacity-50 disabled:pointer-events-none"
-                                    :id="'otp-' + index" :name="'otp-' + index" placeholder="⚬" min="0" max="9"
+                                    :id="'verificationCode-' + index" :name="'verificationCode-' + index" placeholder="⚬" min="0" max="9"
                                     @input="handleInput(index, $event)" @keydown.delete="handleDelete(index, $event)"
-                                    @paste="handlePaste" ref="otpRefs" />
+                                    @paste="handlePaste" ref="verificationCodeRefs" />
                             </div>
 
 
-                            <label for="otp-0" class="absolute top-1 left-0 transition-all text-gray-500 text-sm">
+                            <label for="verificationCode-0" class="absolute top-1 left-0 transition-all text-gray-500 text-sm">
                                 Enter 6-digit code
                             </label>
 
@@ -140,14 +140,14 @@ const emailResendCode = reactive({ email: "" });
 emailResendCode.email = userStore.email;
 
 // Reactive state
-const otpArray = ref(["", "", "", "", "", ""]);
+const verificationCodeArray = ref(["", "", "", "", "", ""]);
 const user = reactive({
     email: "",
-    otp: computed(() => otpArray.value.join(""))
+    verification_code: computed(() => verificationCodeArray.value.join(""))
 });
 
 
-const otpRefs = ref([]);
+const verificationCodeRefs = ref([]);
 const loading = ref(false);
 const toast = inject("toast");
 
@@ -191,18 +191,18 @@ function handleClickResend() {
 const handleInput = (index, event) => {
     let value = event.target.value;
     if (!/^\d?$/.test(value)) {
-        otpArray.value[index] = ""; // Only allow numbers
+        verificationCodeArray.value[index] = ""; // Only allow numbers
         return;
     }
-    otpArray.value[index] = value;
+    verificationCodeArray.value[index] = value;
     // Move to the next input if a digit is entered
-    if (value && index < otpRefs.value.length - 1) {
-        otpRefs.value[index + 1].focus();
+    if (value && index < verificationCodeRefs.value.length - 1) {
+        verificationCodeRefs.value[index + 1].focus();
     }
 };
 const handleDelete = (index, event) => {
-    if (event.key === "Backspace" && !otpArray.value[index] && index > 0) {
-        otpRefs.value[index - 1].focus();
+    if (event.key === "Backspace" && !verificationCodeArray.value[index] && index > 0) {
+        verificationCodeRefs.value[index - 1].focus();
     }
 };
 const handlePaste = (event) => {
@@ -210,17 +210,17 @@ const handlePaste = (event) => {
     let pasteData = (event.clipboardData || window.clipboardData).getData("text");
     pasteData = pasteData.replace(/\D/g, "").slice(0, 6); // Extract only first 4 digits
     if (pasteData.length === 4) {
-        otpArray.value = pasteData.split("");
-        otpRefs.value[3].focus();
+        verificationCodeArray.value = pasteData.split("");
+        verificationCodeRefs.value[3].focus();
     }
 };
 
 
-const getOtpValue = () => otpArray.value.join("");
-defineExpose({ getOtpValue });
+const getverificationCodeValue = () => verificationCodeArray.value.join("");
+defineExpose({ getverificationCodeValue });
 
 
-const isFormValid = computed(() => otpArray.value.every((digit) => digit !== ""));
+const isFormValid = computed(() => verificationCodeArray.value.every((digit) => digit !== ""));
 
 
 const handleCodeVerification = async () => {

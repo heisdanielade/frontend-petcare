@@ -189,8 +189,8 @@ const validateEmail = () => {
 const validatePassword = () => {
   if (!user.value.password) {
     passwordError.value = "Password is required.";
-  } else if (user.value.password.length < 6) {
-    passwordError.value = "Password needs 6+ characters.";
+  } else if (user.value.password.length < 8) {
+    passwordError.value = "Password needs 8+ characters.";
   } else if (user.value.password.includes(" ")) {
     passwordError.value = "Password cannot contain spaces.";
   } else {
@@ -202,7 +202,7 @@ const validatePassword = () => {
 const isFormValid = computed(() => {
   return (
     user.value.email &&
-    user.value.password.length >= 6 &&
+    user.value.password.length >= 8 &&
     !emailError.value &&
     !passwordError.value
   );
