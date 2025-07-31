@@ -50,7 +50,7 @@ export default {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1250));
 
-      const response = await api.post("/auth/resend-verification-email", user);
+      const response = await api.post("/auth/resend-verification", user);
       console.log("Resend verification email response: ", response.data);
       return response.data;
     } catch (error) {

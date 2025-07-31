@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_URL = "http://localhost:8080/v1";
-const API_URL = "https://api-petcare-v2.onrender.com/";
+const API_URL = "https://api-petcare-v2.onrender.com/v1";
 
 const api = axios.create({
   baseURL: API_URL,
