@@ -7,8 +7,8 @@ const currentYear = new Date().getFullYear();
 
 
 const serviceStatus = {
-    status: 'online', // online, offline, maintenance
-    message: 'Services are online', // Services are online, Services under maintenance
+    status: 'offline', // online, offline, maintenance
+    message: 'Services are offline', // Services are online, Services under maintenance
 };
 
 
