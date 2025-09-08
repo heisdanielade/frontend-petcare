@@ -63,7 +63,7 @@ const serviceStatus = {
                 <router-link to="/legal/policy" class="md:mr-4 transition hover:text-purple-300">
                     Privacy
                 </router-link>
-                <a href="https://heisdanielade.xyz" target="_blank" class="transition hover:text-purple-300">
+                <a href="https://github.com/heisdanielade" target="_blank" class="transition hover:text-purple-300">
                     Developer
                 </a>
             </div>

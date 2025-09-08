@@ -9,7 +9,7 @@ const router = useRouter();
 const userStore = useMainUserStore();
 
 const user = reactive({
-    email:  userStore.email,
+    email: userStore.email,
     redactedEmail: '',
     name: userStore.name,
     initial: userStore.initial,
@@ -22,19 +22,19 @@ const user = reactive({
 user.redactedEmail = redactEmail(user.email);
 
 function redactEmail(email) {
-  if (!email || !email.includes('@')) {
-    return '';
-  }
-  const [local, domain] = email.split('@');
-  if (!domain || !domain.includes('.')) {
-    return local.slice(0, 2) + '****@***';
-  }
-  const [domainName, ...tldParts] = domain.split('.');
-  const tld = '.' + tldParts.join('.');
-  const redactedLocal = local.slice(0, 2) + '****';
-  const redactedDomain = '***' + tld;
+    if (!email || !email.includes('@')) {
+        return '';
+    }
+    const [local, domain] = email.split('@');
+    if (!domain || !domain.includes('.')) {
+        return local.slice(0, 2) + '****@***';
+    }
+    const [domainName, ...tldParts] = domain.split('.');
+    const tld = '.' + tldParts.join('.');
+    const redactedLocal = local.slice(0, 2) + '****';
+    const redactedDomain = '***' + tld;
 
-  return `${redactedLocal}@${redactedDomain}`;
+    return `${redactedLocal}@${redactedDomain}`;
 }
 
 
@@ -119,12 +119,13 @@ const handleLogout = () => {
 
                 <!-- Desktop menu -->
                 <div class="hidden justify-between items-center w-full lg:flex md:w-auto md:order-1" id="mobile-menu-2">
-                    
+
                     <!-- Test logged in header links -->
                     <ul class="hidden xflex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
                         <li>
                             <router-link to="/u/settings"
-                                class="block py-2 pr-4 pl-3 text-gray-600 border-b border-gray-100 hover:text-purple-500 transition md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0">Account settings</router-link>
+                                class="block py-2 pr-4 pl-3 text-gray-600 border-b border-gray-100 hover:text-purple-500 transition md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0">Account
+                                settings</router-link>
                         </li>
                         <li>
                             <router-link to="/legal/terms"
@@ -133,7 +134,8 @@ const handleLogout = () => {
                         </li>
                         <li>
                             <span @click="handleLogout()"
-                                class="custom-cursor block py-2 pr-4 pl-3 text-gray-600 border-b border-gray-100 hover:text-purple-500 transition md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0">Sign out<i class="ml-2 text-sm fa-solid fa-arrow-right-from-bracket"></i></span>
+                                class="custom-cursor block py-2 pr-4 pl-3 text-gray-600 border-b border-gray-100 hover:text-purple-500 transition md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0">Sign
+                                out<i class="ml-2 text-sm fa-solid fa-arrow-right-from-bracket"></i></span>
                         </li>
                     </ul>
 
@@ -152,7 +154,7 @@ const handleLogout = () => {
                                 Legal</router-link>
                         </li>
                         <li>
-                            <a href="https://heisdanielade.xyz" target="_blank"
+                            <a href="https://github.com/heisdanielade" target="_blank"
                                 class="block py-2 pr-4 pl-3 text-gray-600 border-b border-gray-100 hover:text-purple-500 transition md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0">Developer</a>
                         </li>
                     </ul>
@@ -174,7 +176,8 @@ const handleLogout = () => {
                     </li>
 
                     <li v-scroll-reveal class="not-shown mb-4 w-full color-dark hover:text-purple-500">
-                        <router-link to="/u/settings" class="mobile-menu-link relative flex items-center justify-end pb-1">
+                        <router-link to="/u/settings"
+                            class="mobile-menu-link relative flex items-center justify-end pb-1">
                             <span class="">
                                 Settings
                             </span>
@@ -218,7 +221,7 @@ const handleLogout = () => {
                         </router-link>
                     </li>
                     <li v-scroll-reveal class="not-shown mb-4 w-full color-dark hover:text-purple-500">
-                        <a href="https://heisdanielade.xyz" target="_blank"
+                        <a href="https://github.com/heisdanielade" target="_blank"
                             class="mobile-menu-link relative flex items-center justify-end pb-1">
                             <span class="">
                                 Developer
